@@ -9,6 +9,7 @@ import (
 	"strings"
 )
 
+const Version = "0.5.0"
 const Port = "8880"
 
 type MacAddress struct {
@@ -16,13 +17,14 @@ type MacAddress struct {
 }
 
 func main() {
+	fmt.Printf("styxut/WoL version %s\n", Version) 
 	setupServer()
 }
 
 func setupServer() {
 	http.HandleFunc("/wol", wolHandler)
 
-	fmt.Printf("Go Server starting on :%s", Port)
+	fmt.Printf("Go Server starting on :%s\n", Port)
 	err := http.ListenAndServe(":"+Port, nil)
 	if err != nil {
 		log.Fatal(err)
